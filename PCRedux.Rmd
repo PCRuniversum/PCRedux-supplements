@@ -2058,6 +2058,8 @@ res_mblrr <- data.frame(
   data
 )
 
+res_mblrr$class <- as.logical(res_mblrr$class)
+
 colnames(res_mblrr) <- c("class", "nBG", "mBG", "rBG", "nTP", "mTP", "rTP")
 
 res_mblrr.fft <- suppressMessages(
