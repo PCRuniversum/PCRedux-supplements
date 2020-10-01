@@ -2137,7 +2137,7 @@ colors <- factor(dec, levels = c("y", "n"), label = c("black", "green"))
 # Test for autocorrelation in the subset of the htPCR data set
 
 res_ac <- sapply(2:ncol(data), function(i) {
-    autocorrelation_test(data[, i], ns_2_numeric = TRUE)
+    autocorrelation_test(data[, i])
 })
 
 
