@@ -148,7 +148,7 @@ plot_random_forest_short <- "Random Forest"
 }
 \end{figure}
 
-The PDF version of this document is available [online](https://github.com/devSJR/PCRedux/raw/master/docs/articles/PCRedux.pdf).
+The PDF version of this document is available **[online supplement](https://github.com/devSJR/PCRedux/raw/master/docs/articles/PCRedux.pdf)**.
 
 # Aims of the Project
 
@@ -2179,7 +2179,7 @@ cdplot(res_ac, droplevels(dec), xlab = "Autocorrelation", ylab = "Class decision
 
 mtext("C", cex = 1, side = 3, adj = 0, font = 2, las = 0)
 
-barplot(
+position_bp <- barplot(
     as.matrix(res_performeR[, c(1:10, 12)]), yaxt = "n", ylab = "",
         main = "Performance of autocorrelation_test",
         col = adjustcolor("grey", alpha.f = 0.5), border = "white"
