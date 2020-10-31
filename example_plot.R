@@ -17,7 +17,9 @@ p1_pos <- data.frame(kbqPCR[, c(1L, which(dec == "y") + 1)]) %>%
   geom_line() +
   theme_bw() +
   xlab("Cycle") +
-  ylab("Raw RFU") +
+  ylab("log10(Raw RFU)") +
+  scale_y_continuous(trans='log10') +
+  annotation_logticks(sides="l") +
   ggtitle(paste0("A) positive, ", "n = ", class[1])) + #qPCR curves
   theme(legend.position = "none")
 
@@ -30,7 +32,9 @@ p1_neg <- data.frame(kbqPCR[, c(1L, which(dec == "n") + 1)]) %>%
   geom_line() +
   theme_bw() +
   xlab("Cycle") +
-  ylab("Raw RFU") +
+  ylab("log10(Raw RFU)") +
+  scale_y_continuous(trans='log10') +
+  annotation_logticks(sides="l") +
   ggtitle(paste0("negative, ", "n = ", class[3])) + #qPCR curves
   theme(legend.position = "none")
 
@@ -43,7 +47,9 @@ p1_amb <- data.frame(kbqPCR[, c(1L, which(dec == "a") + 1)]) %>%
   geom_line() +
   theme_bw() +
   xlab("Cycle") +
-  ylab("Raw RFU") +
+  ylab("log10(Raw RFU)") +
+  scale_y_continuous(trans='log10') +
+  annotation_logticks(sides="l") +
   ggtitle(paste0("ambiguous, ", "n = ", class[2])) + #qPCR curves
   theme(legend.position = "none")
 
