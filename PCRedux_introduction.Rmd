@@ -32,7 +32,7 @@ figure_curve_classification <- "Variations in the classification of amplificatio
 
 figure_curve_classification_short <- "Variations of the classification of amplification curves"
 
-htPCR_nap <- "Examples of negative, ambiguous and positive amplification curves. A) A negative (black), ambiguous (red) and positive (green) amplification curve were selected from the `htPCR` data set. The negative amplification curve is non-sigmoid and has a positive trend. The ambiguous amplification curve is similar to a sigmoidic amplification curve, but shows a positive slope in ground phase (cycle 1 $\\rightarrow$ 5). The positive amplification curve (green) is sigmoid. It starts with a flat baseline (cycle 5 $\\rightarrow$ 25). This is followed by the exponential phase (cycle 5 $\\rightarrow$ 25) and ends in a flat plateau phase (cycle 26 $\\rightarrow$ 35). B) Amplification curves of the `vermeulen1` data set were divided into groups with \\textit{negative}, \\textit{ambiguous} and \\textit{positive} classification. Negative amplification curves have a low signal level. Interesting is the spontaneous increase (probably due to a sensor calibration) in cycles 1 to 2 followed by a linear signal decrease. In principle, the ambiguous amplification curves have a sigmoid curve shape. However, the plateau phase is fairly broad. One of the ambiguous amplification curves begins to rise sharply at Cycle 45. The positive amplification curves have a characteristic sigmoid curve shape."
+htPCR_nap <- "Examples of negative, ambiguous and positive amplification curves. A) A negative (black), ambiguous (red) and positive (green) amplification curve were selected from the `htPCR` data set. The negative amplification curve is non-sigmoid and has a positive trend. The ambiguous amplification curve is similar to a sigmoidic amplification curve, but shows a positive slope in ground phase (cycle 1 $\\rightarrow$ 5). The positive amplification curve (green) is sigmoid. It starts with a flat baseline (cycle 5 $\\rightarrow$ 25). This is followed by the exponential phase (cycle 5 $\\rightarrow$ 25) and ends in a flat plateau phase (cycle 26 $\\rightarrow$ 35). B) Amplification curves of the `vermeulen1` data set were divided into groups with \\textit{negative}, \\textit{ambiguous} and \\textit{positive} classification. Negative amplification curves have a low signal level. Interesting is the spontaneous increase (probably due to a sensor calibration) in cycles 1 to 2 followed by a linear signal decrease. In principle, the ambiguous amplification curves have a sigmoid curve shape. However, the plateau phase is fairly broad. When different qPCR users were asked what they find ambiguous, they responded that there is an additional change in the slope between cycles 15 to 25. This made some believe that the reaction is not valid. One of the ambiguous amplification curves begins to rise sharply at Cycle 45. The positive amplification curves have a characteristic sigmoid curve shape."
 
 htPCR_nap_short <- "Examples of negative, ambiguous and positive amplification curves"
 
@@ -56,7 +56,7 @@ winklR <- "Analysis of the amplification curves of the `RAS002` data set with th
 
 winklR_short <- "Variation analysis of amplification curves with the winklR() function"
 
-curve_fit_fail <- "Incorrect model adjustment for amplification curves. A positive (black), and a negative (red) amplification curve were randomly selected from the `RAS002` data set. The positive amplification curve has a baseline signal of about 2500 RFU and has a definite sigmoidal shape. The negative amplification curve has a baseline signal of approx. 4200 RFU, but only moderately positive slope (no sigmoidal shape). A logistic function with seven parameters (`l7`) has been fitted to both amplification curves. A Cq value of 25.95 was determined for the positive amplification curve. The negative amplification curve had a Cq value of 9.41. However, it can be seen that the latter model fitting is not appropriate for calculating a trustworthy Cq value. An automatic calculation without user control would give a false-positive result. Note: This plot was shown in linear scale to demonstrate typical pitfalls."
+curve_fit_fail <- "Incorrect model adjustment for amplification curves. A positive (black), and a negative (red) amplification curve were randomly selected from the `RAS002` data set. The positive amplification curve has a baseline signal of about 2500 RFU (Raw Fluorescene Unit) and has a definite sigmoidal shape. The negative amplification curve has a baseline signal of approx. 4200 RFU, but only moderately positive slope (no sigmoidal shape). A logistic function with seven parameters (`l7`) has been fitted to both amplification curves. A Cq value of 25.95 was determined for the positive amplification curve. The negative amplification curve had a Cq value of 9.41. However, it can be seen that the latter model fitting is not appropriate for calculating a trustworthy Cq value. An automatic calculation without user control would give a false-positive result. Note: This plot was shown in linear scale to demonstrate typical pitfalls."
 
 curve_fit_fail_short <- "Incorrect model adjustment for amplification curves"
 
@@ -149,7 +149,9 @@ plot_random_forest_short <- "Random Forest"
 }
 \end{figure}
 
-A comprehensive PDF version (including domain knowledge about qPCRs and machine learning) of this document is available **[online supplement](https://github.com/devSJR/PCRedux/raw/master/docs/articles/PCRedux.pdf)**. This online document contains also the code that was used to generate the plot in this introduction.
+- A comprehensive PDF version (including domain knowledge about qPCRs and machine learning) of this document is available **[online supplement](https://github.com/devSJR/PCRedux/raw/master/docs/articles/PCRedux.pdf)**. This online document contains also the code that was used to generate the plot in this introduction.
+- The code for all figures and analysis in the manuscript "PCRedux: A Data Mining and Machine Learning Toolkit for qPCR Experiments" is available at **[https://github.com/PCRuniversum/PCRedux-supplements](https://github.com/PCRuniversum/PCRedux-supplements)**.
+
 
 # Aims of the Project
 
@@ -371,7 +373,7 @@ supplement](https://github.com/devSJR/PCRedux/raw/master/docs/articles/PCRedux.p
 
 # Why is there a need for the \texttt{PCRedux} software?\label{why_PCRedux}
 
-The binary classification of an amplification curve is feasible using bioanalytical methods such as melting curve analysis [@roediger_RJ_2013] or electrophoretic separation [@westermeier2004]. However, this is not always possible or desirable. 
+The classification of an amplification curve is feasible using bioanalytical methods such as melting curve analysis [@roediger_RJ_2013] or electrophoretic separation [@westermeier2004]. However, this is not always possible or desirable. 
 
 - Melting curve analysis is used in some qPCRs as a post-processing step to identify samples which contain the specific target sequence (*positive*) based on a specific melting temperature. However, some detection probe systems like hydrolysis probes do not permit such classification. Moreover, nucleic acids with similar biochemical properties but different sequences may have the same melting temperature. 
 - An electrophoretic separation (classification of target DNA sequences by size and quantity) often requires too much effort for experiments with high sample throughput.
@@ -816,7 +818,7 @@ str(pcrfit_single(RAS002[, 2]))
 
 The ``pcrfit_single()`` function performs preprocessing steps before each calculation, including checking whether an amplification curve contains missing values. Missing values (NA) are measuring points in a data set where no measured values are available or have been removed arbitrarily. NAs may occur if no measurement has been carried out (e.&nbsp;g., defective detector) or lengths of the vectors differ (number of cycles) between the observations. Such missing values are automatically imputed by spline interpolation as described in @roediger2015chippcr. 
 
-All values of an amplification curve are normalized to their 99\% quantile. The normalization is used to equalize the amplitudes differences of amplification curves from thermo-cyclers (sensor technology, software processing) and detection chemistries. To compare amplification curves from different thermo-cyclers, the values should always be scaled systematically using the same method. Although there are other normalization methods (e.&nbsp;g., minimum-maximum normalization, see @roediger2015chippcr, the normalization by the 99\% quantile preserves the information about the level of the background phase. A normalization to the maximum is not used to avoid strong extenuation by outliers. The data in \autoref{plot_bg_pt}D show that the `maxRFU` values after normalization are approximately 1. There is no statistical significant difference between `maxRFU` values of positive and negative amplification curves.
+Values of an amplification curve are normalized to their 99\% quantile or rare cases to the maximum for many calculations. The normalization is used to equalize the amplitudes differences of amplification curves from thermo-cyclers (sensor technology, software processing) and detection chemistries. To compare amplification curves from different thermo-cyclers, the values should always be scaled systematically using the same method. Although there are other normalization methods (e.&nbsp;g., minimum-maximum normalization, see @roediger2015chippcr, the normalization by the 99\% quantile preserves the information about the level of the background phase. A normalization to the maximum is not used to avoid strong extenuation by outliers. The data in \autoref{plot_bg_pt}D show that the `maxRFU` values after normalization are approximately 1. There is no statistical significant difference between `maxRFU` values of positive and negative amplification curves.
 
 Selected algorithms of the ``pcrfit_single()`` function use the ``CPP()`` [\texttt{chipPCR}] function to preprocess (e.&nbsp;g., base-lining, smoothing, imputation of missing values) the amplification curves. Further details are given in @roediger2015chippcr. Until package version 0.2.6-4 was the ``visdat_pcrfit()`` part of the package. ``visdat_pcrfit()`` was used for visualizing the content of data from an analysis with the ``pcrfit_single()`` function. There are other more powerful packages such as \texttt{visdat} by @Tierney2017, \texttt{assertr} by @assertr and \texttt{xray} by @Seibelt_xray.
 
@@ -2552,14 +2554,14 @@ processing such as expression analysis or genotyping [@pabinger_2014].
 Numerous software tools were developed, which deal with theses analytical steps. 
 For example @baebler_quantgenius:_2017 published \texttt{quantGenius} and 
 @mallona_chainy:_nodate published \texttt{Chainy}. However, none of them 
-attempts to make use of characteristics of the amplification curve. Positive 
+attempts to make use of characteristics of the amplification curve. Especially as this shape relies on the used chemistry and fluorochrome system [@ruijter_2014]. Even the cycler used may impact the amplification curve shape [@spiess_system-specific_2016]. Positive 
 amplification curves usually exhibit a sigmoid shape, consisting of a ground 
 phase, exponential phase, and plateau phase. Negative amplification curves 
 resemble flat noisy signal. As a result, the experienced user is usually able to 
 correctly interpret the curve shape. Similarly, outliers and measurement errors 
 can also be identified. When setting up a qPCR assay, manual data analysis is a 
 useful and necessary approach to familiarize oneself with the properties of the 
-qPCR amplification curves.
+qPCR amplification curves. To sum it up in the main document we show that the shape has features that a seen by machine learning models (Random Forest).
 
 It is challenging to analyze and classify amplification curves if they deviate 
 substantially from the sigmoid shape or if their number is no longer feasible 
@@ -2747,11 +2749,11 @@ training data and test data. Some examples were used in the \texttt{PCRedux}
 package to show how predictors of an amplification curve data set can be 
 calculated and used for classifications.
 
-The scope of the \texttt{PCRedux} package is wide. The quantitation of nucleic 
-acids by curve parameters such as the Cq and amplification efficiency is 
-meaningful only if the amplification curves have a sigmoid shape 
-[@ruijter_evaluation_2013; @ruijter_2014; @Ritz2008], which in principle, can 
-now be verified with the \texttt{PCRedux} package. 
+<!-- The scope of the \texttt{PCRedux} package is wide. The quantitation of nucleic  -->
+<!-- acids by curve parameters such as the Cq and amplification efficiency is  -->
+<!-- meaningful only if the amplification curves have a sigmoid shape  -->
+<!-- [@ruijter_evaluation_2013; @ruijter_2014; @Ritz2008], which in principle, can  -->
+<!-- now be verified with the \texttt{PCRedux} package. -->
 
 In this study, it was shown how a given data set of amplification curves with 
 known classifications can be used to build a system that can predict the 
