@@ -1,5 +1,5 @@
 ---
-title: "PCRedux package - an introduction"
+title: "Supporting Information 3 (SI 3): PCRedux package - an introduction"
 author: "The PCRedux package authors"
 date: "`r Sys.Date()`"
 output: 
@@ -100,7 +100,7 @@ figure_autocorrelation_tau <- "Effect of tau"
 
 figure_autocorrelation_tau_short <- "Effect of tau"
 
-autocorrelation <- "Autocorrelation analysis of the amplification curves of the `RAS002` data set. A) Display of all amplification curves of the data set `RAS002`. Negative amplification curves are shown in red and positive amplification curves in black. The autocorrelation\\_test() function was used to analyze all amplification curves. B) The density diagram of the autocorrelation of positive and negative amplification curves shows a bimodal distribution. C) The cdplot calculates the conditional densities of x based on the values of y weighted by the boundary distribution of y. The densities are derived cumulatively via the values of y. The probability that the decision is negative (n) when autocorrelation equals 0.85 is approximately 100\\%. D) Performance analysis using the performeR() function (see \\autoref{section_performeR} for details)."
+autocorrelation <- "Autocorrelation analysis of the amplification curves of the `RAS002` data set. A) Display of all amplification curves of the data set `RAS002`. Negative amplification curves are shown in red and positive amplification curves in black. The autocorrelation\\_test() function was used to analyze all amplification curves. B) The density diagram of the autocorrelation of positive and negative amplification curves shows a bimodal distribution. C) The cdplot calculates the conditional densities of x based on the values of y weighted by the boundary distribution of y. The densities are derived cumulatively via the values of y. The probability that the decision is negative (n) when autocorrelation equals 0.85 is approximately 100\\%. D) Performance analysis using the performeR() function (see \\autoref{section_helper_functions} for details)."
 
 autocorrelation_short <- "Autocorrelation analysis for amplification curves of the `RAS002` data set)"
 
@@ -240,7 +240,8 @@ task during the analysis of qPCR experiments. This is also covered by the
 supplement](https://github.com/devSJR/PCRedux/raw/master/docs/articles/PCRedux.pdf)**.
 
 Characteristics of amplification curves that can be used for the statistical and 
-analytical description are discussed (\autoref{section_analysis_functions}) more 
+analytical description are discussed in the **[online 
+supplement](https://github.com/devSJR/PCRedux/raw/master/docs/articles/PCRedux.pdf)** in more 
 in detail. The examples described focus on the concepts for **binary 
 (dichotomous) classification** [@kruppa_probability_2014] as negative or 
 positive. The mere binary classification into classes "positive" or "negative" 
@@ -314,8 +315,10 @@ dealing with classification. The authors postulated that they had developed an
 improved prediction of Cq values using a modified three-parameter model. One 
 assumption of their approach was that their modified three-parameter model could 
 be applied to any amplification curve. However, there are reasons why such an 
-assumption is not valid. In chapters \autoref{section_software} and 
-\autoref{htPCR_nap_frequency} it was described that a considerable proportion of 
+assumption is not valid. 
+
+In the **[online 
+supplement](https://github.com/devSJR/PCRedux/raw/master/docs/articles/PCRedux.pdf)** it was described that a considerable proportion of 
 amplification curves deviate clearly from a three-parameter model. 
 Multiparametric models with more than four parameters are more frequently 
 adapted to amplification curves. In addition, the multiparametric models tend to 
@@ -700,6 +703,13 @@ mtext(paste0("C   ",  "cpDdiff: ", cpDdiff), cex = 1, side = 3, adj = 0,
 ```
 
 ## Data Analysis Functions of the \texttt{PCRedux} Package \label{section_Functions_of_PCRedux}
+
+### Helper Functions of the \texttt{PCRedux} Package  \label{section_helper_functions}
+
+The \texttt{PCRedux} package contains functions for analyzing amplification curves. These are distinguished into helper functions and analysis functions. The details about the:
+- ``performeR()`` - Performance Analysis for Binary Classification and
+- ``qPCR2fdata()`` - A Helper Function to Convert Amplification Curve Data to the `fdata` format
+can by found in the **[online supplement](https://github.com/devSJR/PCRedux/raw/master/docs/articles/PCRedux.pdf)**.
 
 ### ``pcrfit_single()`` and ``encu()``- Predictor calculation from an Amplification Curve \label{section_pcrfit_single_pcrfit_parallel}
 
@@ -1226,7 +1236,7 @@ mtext("", side = 3, adj = 0, font = 2)
 The predictor `loglin_slope` is used in the following to test if the slope within this ROI can be used to distinguish positive and negative amplification curves. The hypothesis is that positive amplification curves have a higher `loglin_slope` than negative amplification curves. As shown in \autoref{plot_dat_EffTop}D, there is a statistically significant difference between positive and negative amplification curves.
 
 
-The `loglin_slope` values from the `data_sample_subset_balanced` data set (\autoref{section_analysis_functions}) were used to save computing time. A binomial logistic regression (see \autoref{section_technologies_amplification_curves_ML})) was used to analyze the relationship between the `loglin_slope` value and the class (negative, positive). The data set was split into two chunks. This is an important step during such applications. One chunk is for adapting, i. e. training, the model and the other chunk for testing the model. By convention, 70% to 80% of the data is used for training [@walsh_correct_2015; @kuhn_building_2008]. The binomial logistic regression model was adapted using the ``glm()`` [\texttt{stats}] function by using the parameter `family = binomial(link = 'logit')`. To objectify the splitting, the ``sample()`` [\texttt{stats}] function was used.
+The `loglin_slope` values from the `data_sample_subset_balanced` data set (\autoref{section_pcrfit_single_pcrfit_parallel}) were used to save computing time. A binomial logistic regression (see \autoref{section_technologies_amplification_curves_ML})) was used to analyze the relationship between the `loglin_slope` value and the class (negative, positive). The data set was split into two chunks. This is an important step during such applications. One chunk is for adapting, i. e. training, the model and the other chunk for testing the model. By convention, 70% to 80% of the data is used for training [@walsh_correct_2015; @kuhn_building_2008]. The binomial logistic regression model was adapted using the ``glm()`` [\texttt{stats}] function by using the parameter `family = binomial(link = 'logit')`. To objectify the splitting, the ``sample()`` [\texttt{stats}] function was used.
 
 
 ```{r, echo=TRUE}
@@ -1330,7 +1340,7 @@ abline(h = 0.85, col = "grey")
 mtext("B", cex = 1, side = 3, adj = 0, font = 2, las = 0)
 ```
 
-Sensitivity, specificity and further parameters for estimating predictions were calculated using the ``performeR()`` function (\autoref{section_performeR}). The results indicate that the sensitivity and specificity for the test data set provides a good result. However, in this case, they depend heavily on the computer-aided random sampling of the training data, and the total size of the data set (\autoref{plot_Logistic_Regression}B). Over-fitting and under-fitting and other problems need to be addressed [@walsh_correct_2015].
+Sensitivity, specificity and further parameters for estimating predictions were calculated using the ``performeR()`` function (\autoref{section_helper_functions}). The results indicate that the sensitivity and specificity for the test data set provides a good result. However, in this case, they depend heavily on the computer-aided random sampling of the training data, and the total size of the data set (\autoref{plot_Logistic_Regression}B). Over-fitting and under-fitting and other problems need to be addressed [@walsh_correct_2015].
 
 To proof the results, further methods such as Likelihood Ratio Test, McFadden's $R^{2}$, k-fold cross-validation, Receiver Operating Characteristic (ROC) analysis and model interpretation should be used [@arlot_survey_2010; @mcfadden_conditional_1974; @sing_rocr:_2005].
 
@@ -1787,7 +1797,7 @@ The `head2tail_ratio` values differ significantly between negative and positive 
 - the 25% quantile is the value for which 25% of all values are smaller than this value. 
 - the 75% quantile is the value for which 75% of all values are greater than this value. 
 
-Subsequent, a robust linear regression analysis (``lmrob()``) is preformed individually on both regions of the amplification curve. The rationale behind this analysis is that the slope and intercept of an amplification curve differ in the background and plateau region. This is also shown by the simulations in \autoref{figure_sigmoid_curve_models}A-C. In the example shown below, the observations "P01.W19", "P06.W35", "P33.W66", "P65.W90", "P71.W23" and "P87.W01" were arbitrarily selected for demonstration purposes \autoref{plot_mblrr}. Another example is shown in \autoref{HCU32}A. Those amplification curves have a slight negative trend in the base-line region and a positive trend in the plateau region.
+Subsequent, a robust linear regression analysis (``lmrob()``) is preformed individually on both regions of the amplification curve. The rationale behind this analysis is that the slope and intercept of an amplification curve differ in the background and plateau region. This is also shown by the simulations in \autoref{figure_sigmoid_curve_models}A-C. In the example shown below, the observations "P01.W19", "P06.W35", "P33.W66", "P65.W90", "P71.W23" and "P87.W01" were arbitrarily selected for demonstration purposes \autoref{plot_mblrr}. Those amplification curves have a slight negative trend in the base-line region and a positive trend in the plateau region.
 
 The correlation coefficient\footnote{Product moment correlation coefficient (Pearson)} is a measure to quantify the dependence on variables (e.&nbsp;g., number of cycles, signal height). The correlation coefficient is always between -1 and 1, with a value close to -1 describing a strong-negative dependency and close to 1 describing a strong-positive dependency; if the value is 0, there is no dependency between the variables. The most frequently used correlation coefficient to describe a linear dependency is the Pearson correlation coefficient *r*. The correlation coefficient can be used as a predictor. Similar data structures have similar correlation coefficients. However, variables that are not strongly correlated can also be important for modeling.
 
