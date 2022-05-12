@@ -148,7 +148,7 @@ plot_random_forest_short <- "Random Forest"
 }
 \end{figure}
 
-The PDF version of this document is available **[online supplement](https://github.com/devSJR/PCRedux/raw/master/docs/articles/PCRedux.pdf)**.
+The PDF version of this document is available **[online supplement](https://github.com/PCRuniversum/PCRedux-supplements/raw/master/PCRedux.pdf)**.
 
 # Aims of the `PCRedux` package
 
