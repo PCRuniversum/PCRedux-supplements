@@ -289,7 +289,7 @@ TravisCI was chosen as continues integration service for \texttt{PCRedux}. The T
 
 ### Naming Convention and Literate Programming \label{section_Naming_Convention_and_Literate_Programming}
 
-\texttt{PCRedux} is an \text{R} ($\geq$ v. 3.3.3) package, written as an  \textit{S3} object system. \textit{S3} has characteristics of object orientated programming, but eases the development due to the use of the naming conventions [@noauthor_compstat_2008]. In most places functions and parameter names are written as underscore separated (underscore$\_$sep), which is a widely used style in \texttt{R} packages [@Baaaath_2012]. This convention had to be violated in coding sections where functionality from other packages was used.
+\texttt{PCRedux} is an `r packageDescription("PCRedux")$Depends` package, written as an \textit{S3} object system. \textit{S3} has characteristics of object orientated programming, but eases the development due to the use of the naming conventions [@noauthor_compstat_2008]. In most places functions and parameter names are written as underscore separated (underscore$\_$sep), which is a widely used style in \texttt{R} packages [@Baaaath_2012]. This convention had to be violated in coding sections where functionality from other packages was used.
 
 By convention, it was specified that functions from the \texttt{PCRedux} package shall be reported in the form ``functionname()`` (e.&nbsp;g., ``qPCR2fdata()``) and functions from other packages in the form ``functionname()`` [\texttt{packagename}] (e.&nbsp;g., ``pcrfit()`` [\texttt{qpcR}]).
 
@@ -309,7 +309,7 @@ install.packages("devtools")
 devtools::install_github("devSJR/PCRedux")
 ```
 
-\texttt{PCRedux} is available as stable version from the \textbf{C}omprehensive \texttt{R} \textbf{A}rchive \textbf{N}etwork (CRAN) at \url{https://CRAN.R-project.org/package=PCRedux}. Package published at CRAN undergo intensive checking procedures. In addition, CRAN tests whether the package can be built for common operating systems and whether all version dependencies are solved. To install \texttt{PCRedux} first install \texttt{R} ($\geq$ v. 3.3.3). Then start \texttt{R} and type in the prompt:
+\texttt{PCRedux} is available as stable version from the \textbf{C}omprehensive \texttt{R} \textbf{A}rchive \textbf{N}etwork (CRAN) at \url{https://CRAN.R-project.org/package=PCRedux}. Package published at CRAN undergo intensive checking procedures. In addition, CRAN tests whether the package can be built for common operating systems and whether all version dependencies are solved. To install \texttt{PCRedux} first install `r packageDescription("PCRedux")$Depends`. Then start \texttt{R} and type in the prompt:
 
 ```{r, eval=FALSE, echo=TRUE}
 # Select your local mirror
